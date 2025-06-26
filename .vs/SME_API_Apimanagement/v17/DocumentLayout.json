@@ -1,0 +1,194 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\entities\\apimangedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\entities\\apimangedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\services\\morganizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\services\\morganizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\controllers\\tsystemapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\controllers\\tsystemapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\repository\\tapimappingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\repository\\tapimappingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\controllers\\morganizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\controllers\\morganizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\service\\hremployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\service\\hremployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\services\\morganizationupsertjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\services\\morganizationupsertjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|d:\\git_project\\si_git_project\\si_apimanagement\\si_apimanagement\\sme_api_apimanagement\\sme_api_apimanagement\\service\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AEB117-540C-432F-B9E5-7963CDDC64B6}|SME_API_Apimanagement\\SME_API_Apimanagement.csproj|solutionrelative:sme_api_apimanagement\\service\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Program.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Program.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Program.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Program.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwCkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T10:38:40.402Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApiMangeDBContext.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Entities\\ApiMangeDBContext.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Entities\\ApiMangeDBContext.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Entities\\ApiMangeDBContext.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Entities\\ApiMangeDBContext.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T08:13:56.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TSystemAPIController.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\TSystemAPIController.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Controllers\\TSystemAPIController.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\TSystemAPIController.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Controllers\\TSystemAPIController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAuwIQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T07:24:24.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TAPIMappingRepository.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Repository\\TAPIMappingRepository.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Repository\\TAPIMappingRepository.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Repository\\TAPIMappingRepository.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Repository\\TAPIMappingRepository.cs",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAgwBQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T06:31:20.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MOrganizationUpsertJob.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Services\\MOrganizationUpsertJob.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Services\\MOrganizationUpsertJob.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Services\\MOrganizationUpsertJob.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Services\\MOrganizationUpsertJob.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:18:02.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MOrganizationService.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Services\\MOrganizationService.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Services\\MOrganizationService.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Services\\MOrganizationService.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Services\\MOrganizationService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:13:57.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MOrganizationController.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\MOrganizationController.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Controllers\\MOrganizationController.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\MOrganizationController.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Controllers\\MOrganizationController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAUwIEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:34:30.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HrEmployeeService.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Service\\HrEmployeeService.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Service\\HrEmployeeService.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Service\\HrEmployeeService.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Service\\HrEmployeeService.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAlwIcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:21:47.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserManagementController.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\UserManagementController.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Controllers\\UserManagementController.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Controllers\\UserManagementController.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Controllers\\UserManagementController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAQwFwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:33:12.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserManagementService.cs",
+              "DocumentMoniker": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Service\\UserManagementService.cs",
+              "RelativeDocumentMoniker": "SME_API_Apimanagement\\Service\\UserManagementService.cs",
+              "ToolTip": "D:\\Git_project\\SI_GIT_PROJECT\\SI_APIManagement\\SI_APIManagement\\SME_API_Apimanagement\\SME_API_Apimanagement\\Service\\UserManagementService.cs",
+              "RelativeToolTip": "SME_API_Apimanagement\\Service\\UserManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T02:13:09.356Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

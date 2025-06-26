@@ -1,0 +1,1577 @@
+[
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.AuthController",
+    "Method": "GenerateToken",
+    "RelativePath": "api/auth/token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ErrorApiLogController",
+    "Method": "GetAll",
+    "RelativePath": "api/ErrorApiLog",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ErrorApiLogController",
+    "Method": "Create",
+    "RelativePath": "api/ErrorApiLog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorLog",
+        "Type": "SME_API_Apimanagement.Entities.TErrorApiLog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ErrorApiLogController",
+    "Method": "GetById",
+    "RelativePath": "api/ErrorApiLog/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ErrorApiLogController",
+    "Method": "Update",
+    "RelativePath": "api/ErrorApiLog/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "errorLog",
+        "Type": "SME_API_Apimanagement.Entities.TErrorApiLog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ErrorApiLogController",
+    "Method": "Delete",
+    "RelativePath": "api/ErrorApiLog/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiInformationController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/ApiInformation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "servicename",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_Apimanagement.Entities.MApiInformation, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiInformationController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/ApiInformation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SME_API_Apimanagement.Entities.MApiInformation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiInformationController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/ApiInformation/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "SME_API_Apimanagement.Entities.MApiInformation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiInformationController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/ApiInformation/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiInformationController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/ApiInformation/{serviceCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Entities.MApiInformation",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiManangementController",
+    "Method": "GetApiList",
+    "RelativePath": "api/SYS-API/ApiManangement",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SME_API_Apimanagement.Models.ApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Models.ApiModels, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.ApiManangementController",
+    "Method": "GetApi",
+    "RelativePath": "api/SYS-API/ApiManangement/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.DropdownController",
+    "Method": "GetDropdownOrganization",
+    "RelativePath": "api/SYS-API/Dropdown/GetDropdownOrganization",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Models.vDropdownDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.DropdownController",
+    "Method": "GetDropdownOrganizationWithOutData",
+    "RelativePath": "api/SYS-API/Dropdown/GetDropdownOrganizationWithOutData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "WoModels",
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Models.MOrganizationModels, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Models.vDropdownDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.DropdownController",
+    "Method": "GetDropdownSystem",
+    "RelativePath": "api/SYS-API/Dropdown/GetDropdownSystem",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Models.vDropdownDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.DropdownController",
+    "Method": "GetDropdownLookUp",
+    "RelativePath": "api/SYS-API/Dropdown/LookUp/{LookUpType}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "LookUpType",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Models.vDropdownDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/MOrganization",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/MOrganization",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "organization",
+        "Type": "SME_API_Apimanagement.Entities.MOrganization",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/MOrganization/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/MOrganization/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "organization",
+        "Type": "SME_API_Apimanagement.Entities.MOrganization",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/MOrganization/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "GetOrgBySeach",
+    "RelativePath": "api/SYS-API/MOrganization/GetOrgBySeach",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MOrganizationModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Models.MOrganizationModels, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "OrgBatch",
+    "RelativePath": "api/SYS-API/MOrganization/Organization-Batch",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MOrganizationController",
+    "Method": "UpsertOrg",
+    "RelativePath": "api/SYS-API/MOrganization/UpsertOrg",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MOrganizationModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "GetRegisters",
+    "RelativePath": "api/SYS-API/MRegister",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SME_API_Apimanagement.Entities.MRegister, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "GetRegister",
+    "RelativePath": "api/SYS-API/MRegister/{apikey}/{xUrl}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "apikey",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "xUrl",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Entities.MRegister",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "UpdateRegister",
+    "RelativePath": "api/SYS-API/MRegister/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "register",
+        "Type": "SME_API_Apimanagement.Entities.MRegister",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "DeleteRegister",
+    "RelativePath": "api/SYS-API/MRegister/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "GetRegisterBySearch",
+    "RelativePath": "api/SYS-API/MRegister/GetRegisterBySearch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MRegisterModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "MRegisterController",
+    "Method": "UpsertRegister",
+    "RelativePath": "api/SYS-API/MRegister/UpsertRegister",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.UpSertRegisterApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/MSystem",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/MSystem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "system",
+        "Type": "SME_API_Apimanagement.Entities.MSystem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/MSystem/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/MSystem/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "system",
+        "Type": "SME_API_Apimanagement.Entities.MSystem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/MSystem/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "GetSystemBySearch",
+    "RelativePath": "api/SYS-API/MSystem/GetSystemBySearch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MSystemModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Models.MSystemModels, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemController",
+    "Method": "UpsertSystem",
+    "RelativePath": "api/SYS-API/MSystem/UpsertSystem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MSystemModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/MSystemInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/MSystemInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "SME_API_Apimanagement.Entities.MSystemInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/MSystemInfo/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "entity",
+        "Type": "SME_API_Apimanagement.Entities.MSystemInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/MSystemInfo/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/MSystemInfo/{systemcode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "systemcode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.MSystemInfoController",
+    "Method": "UpsertSystemInfo",
+    "RelativePath": "api/SYS-API/MSystemInfo/UpsertSystemInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.MSystemInfoModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/TAPIMapping",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/TAPIMapping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mapping",
+        "Type": "SME_API_Apimanagement.Entities.TApiPermisionMapping",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/TAPIMapping/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/TAPIMapping/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "mapping",
+        "Type": "SME_API_Apimanagement.Entities.TApiPermisionMapping",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/TAPIMapping/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "GetAllByBusinessIdAsync",
+    "RelativePath": "api/SYS-API/TAPIMapping/GetAPIList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "models",
+        "Type": "SME_API_Apimanagement.Models.searchApiPermisionRespone",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TAPIMappingController",
+    "Method": "GetTApiMappingBySearch",
+    "RelativePath": "api/SYS-API/TAPIMapping/GetTApiMappingBySearch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.TApiPermisionMappingModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Models.TApiPermisionMappingModels, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TErrorApiLogController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/TErrorApiLog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "log",
+        "Type": "SME_API_Apimanagement.Entities.TErrorApiLog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TErrorApiLogController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/TErrorApiLog/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TErrorApiLogController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/TErrorApiLog/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "log",
+        "Type": "SME_API_Apimanagement.Entities.TErrorApiLog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TErrorApiLogController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/TErrorApiLog/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TErrorApiLogController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/TErrorApiLog/GetErrorApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "SME_API_Apimanagement.Models.TErrorApiLogModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/TSystemAPI",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/TSystemAPI",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api",
+        "Type": "SME_API_Apimanagement.Entities.TSystemApiMapping",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/TSystemAPI/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/TSystemAPI/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "api",
+        "Type": "SME_API_Apimanagement.Entities.TSystemApiMapping",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/TSystemAPI/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "GetTSystemMappingBySearch",
+    "RelativePath": "api/SYS-API/TSystemAPI/GetTSystemMappingBySearch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.TSystemApiMappingModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.TSystemAPIController",
+    "Method": "UpsertSystemApi",
+    "RelativePath": "api/SYS-API/TSystemAPI/UpsertSystemApi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xModels",
+        "Type": "SME_API_Apimanagement.Models.UpSertSystemApiModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "GetAll",
+    "RelativePath": "api/SYS-API/UserManagement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SME_API_Apimanagement.Entities.TEmployeeRole, SME_API_Apimanagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "GetById",
+    "RelativePath": "api/SYS-API/UserManagement/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SME_API_Apimanagement.Entities.TEmployeeRole",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "Update",
+    "RelativePath": "api/SYS-API/UserManagement/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "entity",
+        "Type": "SME_API_Apimanagement.Entities.TEmployeeRole",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "Delete",
+    "RelativePath": "api/SYS-API/UserManagement/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "Create",
+    "RelativePath": "api/SYS-API/UserManagement/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "SME_API_Apimanagement.Models.EmployeeRoleModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "GetAllEmployeeList",
+    "RelativePath": "api/SYS-API/UserManagement/GetAllEmployeeList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "models",
+        "Type": "SME_API_Apimanagement.Models.searchEmployeeRoleModels",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "GetEmployeeDetail",
+    "RelativePath": "api/SYS-API/UserManagement/GetEmployeeDetail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "models",
+        "Type": "SME_API_Apimanagement.Models.EmployeeResult",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SME_API_Apimanagement.Controllers.UserManagementController",
+    "Method": "GetEmployeeProfileList",
+    "RelativePath": "api/SYS-API/UserManagement/GetEmployeeProfileList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

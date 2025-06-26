@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Deploy\SME\SI\API_Management</_PublishTargetUrl>
+    <History>True|2025-06-25T03:00:02.6584606Z||;True|2025-06-25T09:48:34.4522708+07:00||;True|2025-06-24T10:40:53.0581606+07:00||;True|2025-06-23T10:03:08.6160732+07:00||;True|2025-06-18T17:45:48.9676507+07:00||;True|2025-06-09T17:54:46.8118246+07:00||;True|2025-06-08T13:40:18.5916231+07:00||;True|2025-06-07T18:28:32.7984977+07:00||;True|2025-06-07T17:11:45.2847788+07:00||;True|2025-06-07T16:24:11.8248520+07:00||;True|2025-06-07T13:13:21.2324689+07:00||;True|2025-06-07T13:12:26.6411915+07:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

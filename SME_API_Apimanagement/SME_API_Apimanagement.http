@@ -1,0 +1,6 @@
+@SME_API_Apimanagement_HostAddress = http://localhost:5006
+
+GET {{SME_API_Apimanagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

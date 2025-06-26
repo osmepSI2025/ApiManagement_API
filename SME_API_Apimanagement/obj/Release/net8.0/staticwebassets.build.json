@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "/udx0TQ8oRoE2NGAgVb2otDzu5jlOmYeOxeDyTgWdus=",
+  "Source": "SME_API_Apimanagement",
+  "BasePath": "_content/SME_API_Apimanagement",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
