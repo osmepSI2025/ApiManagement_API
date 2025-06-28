@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
-using System;
-using System.Linq;
 
 namespace SME_API_Apimanagement.Repository
 {
@@ -54,7 +52,7 @@ namespace SME_API_Apimanagement.Repository
             }
         }
         public async Task<ViewRegisterApiModels> GetRegisterBySearch(MRegisterModels xModels)
-        { 
+        {
             var result = new ViewRegisterApiModels();
             try
             {
@@ -68,7 +66,8 @@ namespace SME_API_Apimanagement.Repository
                                 EndDate = r.EndDate,
                                 OrganizationName = o.OrganizationName, // สมมติว่ามีฟิลด์ OrganizationName
                                 FlagActive = r.FlagActive
-                                ,ApiKey = r.ApiKey,
+                                ,
+                                ApiKey = r.ApiKey,
                                 CreateDate = r.CreateDate,
                                 UpdateDate = r.UpdateDate,
 
@@ -98,7 +97,7 @@ namespace SME_API_Apimanagement.Repository
                 {
                     query = query.Where(u => u.UpdateDate.Value.Date == xModels.UpdateDate.Value.Date);
                 }
-                result .TotalRowsList = await query.CountAsync(); // นับจำนวนแถวทั้งหมด
+                result.TotalRowsList = await query.CountAsync(); // นับจำนวนแถวทั้งหมด
                 if (xModels.rowFetch != 0)
                     query = query.Skip<MRegisterModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
 
@@ -129,8 +128,8 @@ namespace SME_API_Apimanagement.Repository
                         apiKey = queryUpdate.ApiKey;
                         if (queryUpdate != null)
                         {
-                            if (xModels.MRegister.StartDate!=null)
-                            queryUpdate.StartDate = xModels.MRegister.StartDate;
+                            if (xModels.MRegister.StartDate != null)
+                                queryUpdate.StartDate = xModels.MRegister.StartDate;
                             if (xModels.MRegister.EndDate != null)
                                 queryUpdate.EndDate = xModels.MRegister.EndDate;
                             if (xModels.MRegister.FlagActive != null)
@@ -148,7 +147,7 @@ namespace SME_API_Apimanagement.Repository
                         }
                     }
 
-                   await _context.SaveChangesAsync(); // เรียก SaveChangesAsync ครั้งเดียว
+                    await _context.SaveChangesAsync(); // เรียก SaveChangesAsync ครั้งเดียว
                     success = apiKey;
                 }
                 else
@@ -171,7 +170,7 @@ namespace SME_API_Apimanagement.Repository
                     _context.MRegisters.Add(xRaw);
                     await _context.SaveChangesAsync();
                     success = xRaw.ApiKey; // ดึงค่า Id หลัง Save
-                
+
                 }
             }
             catch (Exception ex)
@@ -217,7 +216,7 @@ namespace SME_API_Apimanagement.Repository
                 await _context.SaveChangesAsync();
             }
         }
-       
+
     }
 
 }

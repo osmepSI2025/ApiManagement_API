@@ -17,6 +17,8 @@ public partial class ApiMangeDBContext : DbContext
 
     public virtual DbSet<MApiInformation> MApiInformations { get; set; }
 
+    public virtual DbSet<MLineOa> MLineOas { get; set; }
+
     public virtual DbSet<MLookup> MLookups { get; set; }
 
     public virtual DbSet<MMenu> MMenus { get; set; }
@@ -33,6 +35,8 @@ public partial class ApiMangeDBContext : DbContext
 
     public virtual DbSet<TApiPermisionMapping> TApiPermisionMappings { get; set; }
 
+    public virtual DbSet<TEmployeeLineOa> TEmployeeLineOas { get; set; }
+
     public virtual DbSet<TEmployeeRole> TEmployeeRoles { get; set; }
 
     public virtual DbSet<TErrorApiLog> TErrorApiLogs { get; set; }
@@ -43,9 +47,9 @@ public partial class ApiMangeDBContext : DbContext
 
     public virtual DbSet<TSystemApiMapping> TSystemApiMappings { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=192.168.9.155;Database=bluecarg_SME_API;User Id=sa;Password=Osmep@2025;TrustServerCertificate=True;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=192.168.9.155;Database=bluecarg_SME_API;User Id=sa;Password=Osmep@2025;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -69,6 +73,24 @@ public partial class ApiMangeDBContext : DbContext
             entity.Property(e => e.Urldevelopment).HasColumnName("URLDevelopment");
             entity.Property(e => e.Urlproduction).HasColumnName("URLProduction");
             entity.Property(e => e.Username).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<MLineOa>(entity =>
+        {
+            entity.ToTable("M_LineOA");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreateBy).HasMaxLength(50);
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.LineOaChannelId).HasColumnName("LineOA_Channel_ID");
+            entity.Property(e => e.LineOaChannelSecret)
+                .HasMaxLength(250)
+                .HasColumnName("LineOA_Channel_Secret");
+            entity.Property(e => e.LineOaName)
+                .HasMaxLength(200)
+                .HasColumnName("LineOA_Name");
+            entity.Property(e => e.UpdateBy).HasMaxLength(50);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<MLookup>(entity =>
@@ -254,6 +276,26 @@ public partial class ApiMangeDBContext : DbContext
                 .HasColumnName("System_Code");
             entity.Property(e => e.UpdateBy).HasMaxLength(50);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TEmployeeLineOa>(entity =>
+        {
+            entity.ToTable("T_EmployeeLineOA");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.EmployeeId).HasMaxLength(50);
+            entity.Property(e => e.LineOaAccessToken).HasColumnName("LineOA_AccessToken");
+            entity.Property(e => e.LineOaDateJoined)
+                .HasColumnType("datetime")
+                .HasColumnName("LineOA_DateJoined");
+            entity.Property(e => e.LineOaDisplayName)
+                .HasMaxLength(200)
+                .HasColumnName("LineOA_DisplayName");
+            entity.Property(e => e.LineOaPictureUrl).HasColumnName("LineOA_PictureUrl");
+            entity.Property(e => e.LineOaRefreshToken).HasColumnName("LineOA_RefreshToken");
+            entity.Property(e => e.LineOaUserId)
+                .HasMaxLength(200)
+                .HasColumnName("LineOA_UserId");
         });
 
         modelBuilder.Entity<TEmployeeRole>(entity =>
