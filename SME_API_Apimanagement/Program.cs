@@ -78,6 +78,8 @@ namespace SME_API_Apimanagement
             builder.Services.AddScoped< MOrganizationService>();
              builder.Services.AddScoped<TEmployeeLineOaService>();
             builder.Services.AddScoped< TEmployeeLineOaRepository>();
+            builder.Services.AddScoped<TEmployeeMapSystemService>();
+            builder.Services.AddScoped<TEmployeeMapSystemRepository>();
 
             builder.Services.AddScoped<IApiInformationRepository, ApiInformationRepository>();
             builder.Services.AddScoped<ICallAPIService, CallAPIService>(); // Register ICallAPIService with CallAPIService

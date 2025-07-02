@@ -37,6 +37,8 @@ public partial class ApiMangeDBContext : DbContext
 
     public virtual DbSet<TEmployeeLineOa> TEmployeeLineOas { get; set; }
 
+    public virtual DbSet<TEmployeeMapSystem> TEmployeeMapSystems { get; set; }
+
     public virtual DbSet<TEmployeeRole> TEmployeeRoles { get; set; }
 
     public virtual DbSet<TErrorApiLog> TErrorApiLogs { get; set; }
@@ -296,6 +298,20 @@ public partial class ApiMangeDBContext : DbContext
             entity.Property(e => e.LineOaUserId)
                 .HasMaxLength(200)
                 .HasColumnName("LineOA_UserId");
+        });
+
+        modelBuilder.Entity<TEmployeeMapSystem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_T_Employee_Map_System_1");
+
+            entity.ToTable("T_Employee_Map_System");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreateBy).HasMaxLength(50);
+            entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.EmployeeId).HasMaxLength(50);
+            entity.Property(e => e.UpdateBy).HasMaxLength(50);
+            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<TEmployeeRole>(entity =>

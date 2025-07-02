@@ -18,5 +18,8 @@ namespace SME_API_Apimanagement.Models
         public int rowOFFSet { get; set; }
         public int rowFetch { get; set; }
         public string? Token { get; set; }
+
+        public string? EmployeeId { get; set; }
+        public string? EmployeeRole { get; set; }
     }
 }

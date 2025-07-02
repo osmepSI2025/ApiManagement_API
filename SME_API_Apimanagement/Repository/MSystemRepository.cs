@@ -120,40 +120,84 @@ namespace SME_API_Apimanagement.Repository
         {
             try
             {
-                var query = (from s in _context.MSystems
-                             where s.FlagDelete == "N"
-                             select new MSystemModels
-                             {
-                                 Id = s.Id,
-                                 CreateBy = s.CreateBy,
-                                 FlagDelete = s.FlagDelete,
-                                 UpdateBy = s.UpdateBy,
-                                 FlagActive = s.FlagActive,
-                                 IsSelected = s.FlagActive?? false,
-                                 SystemCode = s.SystemCode,
-                                 SystemName = s.SystemName,
-                                 CreateDate = s.CreateDate,
-                                 UpdateDate = s.UpdateDate,
-                                 OwnerSystemCode = s.OwnerSystemCode
-                             }).AsQueryable(); // ทำให้ Query เป็น IQueryable
-
-                // Apply Filters
-                if (!string.IsNullOrEmpty(xModels?.SystemName))
+                if (xModels.EmployeeRole == "SUPERADMIN")
                 {
-                    query = query.Where(u => u.SystemName.Contains(xModels.SystemName));
-                }
-                //if (xModels?.FlagActive != null)
-                //{
-                //    query = query.Where(u => u.FlagActive == xModels.FlagActive);
-                //}
-                if (xModels?.CreateDate != null)
-                {
-                    query = query.Where(u => u.CreateDate.Value.Date == xModels.CreateDate.Value.Date);
-                }
+                    var querySuperAdmin = (from s in _context.MSystems
+                                 where s.FlagDelete == "N"
+                                 select new MSystemModels
+                                 {
+                                     Id = s.Id,
+                                     CreateBy = s.CreateBy,
+                                     FlagDelete = s.FlagDelete,
+                                     UpdateBy = s.UpdateBy,
+                                     FlagActive = s.FlagActive,
+                                     IsSelected = s.FlagActive ?? false,
+                                     SystemCode = s.SystemCode,
+                                     SystemName = s.SystemName,
+                                     CreateDate = s.CreateDate,
+                                     UpdateDate = s.UpdateDate,
+                                     OwnerSystemCode = s.OwnerSystemCode
+                                   
 
-                if (xModels.rowFetch != 0)
-                    query = query.Skip<MSystemModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
-                return await query.ToListAsync();
+                                 }).AsQueryable(); // ทำให้ Query เป็น IQueryable
+
+                    // Apply Filters
+                    if (!string.IsNullOrEmpty(xModels?.SystemName))
+                    {
+                        querySuperAdmin = querySuperAdmin.Where(u => u.SystemName.Contains(xModels.SystemName));
+                    }
+             
+                    if (xModels?.CreateDate != null)
+                    {
+                        querySuperAdmin = querySuperAdmin.Where(u => u.CreateDate.Value.Date == xModels.CreateDate.Value.Date);
+                    }
+
+                    if (xModels.rowFetch != 0)
+                        querySuperAdmin = querySuperAdmin.Skip<MSystemModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
+                    return await querySuperAdmin.ToListAsync();
+                }
+                else {
+
+                    var query = (from s in _context.MSystems
+                                 join em in _context.TEmployeeMapSystems on s.Id equals em.SystemApiId
+                                 where s.FlagDelete == "N"
+                                 select new MSystemModels
+                                 {
+                                     Id = s.Id,
+                                     CreateBy = s.CreateBy,
+                                     FlagDelete = s.FlagDelete,
+                                     UpdateBy = s.UpdateBy,
+                                     FlagActive = s.FlagActive,
+                                     IsSelected = s.FlagActive ?? false,
+                                     SystemCode = s.SystemCode,
+                                     SystemName = s.SystemName,
+                                     CreateDate = s.CreateDate,
+                                     UpdateDate = s.UpdateDate,
+                                     OwnerSystemCode = s.OwnerSystemCode
+                                     ,
+                                     EmployeeId = em.EmployeeId,
+
+                                 }).AsQueryable(); // ทำให้ Query เป็น IQueryable
+
+                    // Apply Filters
+                    if (!string.IsNullOrEmpty(xModels?.SystemName))
+                    {
+                        query = query.Where(u => u.SystemName.Contains(xModels.SystemName));
+                    }
+                    if (!string.IsNullOrEmpty(xModels?.EmployeeId))
+                    {
+                        query = query.Where(u => u.EmployeeId == xModels.EmployeeId);
+                    }
+                    if (xModels?.CreateDate != null)
+                    {
+                        query = query.Where(u => u.CreateDate.Value.Date == xModels.CreateDate.Value.Date);
+                    }
+
+                    if (xModels.rowFetch != 0)
+                        query = query.Skip<MSystemModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
+                    return await query.ToListAsync();
+                }
+             
             }
             catch (Exception ex)
             {
