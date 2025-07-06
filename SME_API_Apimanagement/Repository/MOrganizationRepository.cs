@@ -27,12 +27,42 @@ namespace SME_API_Apimanagement.Repository
             await _context.SaveChangesAsync();
         }
 
+        //public async Task UpdateAsync(MOrganization organization)
+        //{
+        //    i
+        //    _context.MOrganizations.Update(organization);
+        //    await _context.SaveChangesAsync();
+        //}
         public async Task UpdateAsync(MOrganization organization)
         {
-            _context.MOrganizations.Update(organization);
+            if (organization == null)
+                throw new ArgumentNullException(nameof(organization));
+
+            var existing = await _context.MOrganizations
+                .FirstOrDefaultAsync(x => x.OrganizationId == organization.OrganizationId && x.FlagDelete == "N");
+
+            if (existing == null)
+                throw new InvalidOperationException("Organization not found or has been deleted.");
+
+            // Update only the fields you want to allow changes for
+            if (!string.IsNullOrEmpty(organization.OrganizationName)) 
+            {
+                existing.OrganizationName = organization.OrganizationName;
+            }
+            if (!string.IsNullOrEmpty(organization.OrganizationCode))
+            {
+                existing.OrganizationCode = organization.OrganizationCode;
+            }
+            if (!string.IsNullOrEmpty(organization.ParentOrganizationId))
+            {
+                existing.ParentOrganizationId = organization.ParentOrganizationId;
+            }
+         
+            existing.UpdateBy = organization.UpdateBy;
+            existing.UpdateDate = DateTime.Now;
+
             await _context.SaveChangesAsync();
         }
-
         public async Task DeleteAsync(int id)
         {
             var organization = await _context.MOrganizations.FindAsync(id);

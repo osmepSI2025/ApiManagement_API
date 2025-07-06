@@ -15,6 +15,10 @@ public partial class MSystem
 
     public string? FlagDelete { get; set; }
 
+    public DateTime? StartDate { get; set; }
+
+    public DateTime? EndDate { get; set; }
+
     public string? CreateBy { get; set; }
 
     public DateTime? CreateDate { get; set; }

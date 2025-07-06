@@ -11,6 +11,8 @@ namespace SME_API_Apimanagement.Repository
         Task<int> UpdateAsync(MSystem system);
         Task<int> DeleteAsync(int id);
         Task<List<MSystemModels>> GetSystemBySearch(MSystemModels xModels);
+        Task<List<MSystemModels>> GetSystemBySearchMaster(MSystemModels xModels);
+        
         Task<int> UpsertSystem(MSystemModels xModels);
     }
 }

@@ -209,9 +209,11 @@ public partial class ApiMangeDBContext : DbContext
 
             entity.Property(e => e.CreateBy).HasMaxLength(50);
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.FlagDelete).HasMaxLength(1);
             entity.Property(e => e.Note).HasMaxLength(500);
             entity.Property(e => e.OwnerSystemCode).HasMaxLength(50);
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.SystemCode)
                 .HasMaxLength(50)
                 .HasColumnName("System_Code");

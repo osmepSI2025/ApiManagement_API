@@ -33,6 +33,7 @@ namespace SME_API_Apimanagement.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] MSystem system)
         {
+            system.CreateBy = system.CreateBy;
             system.FlagDelete = "N";
             system.CreateDate = DateTime.UtcNow;
             await _repository.AddAsync(system);
@@ -48,6 +49,7 @@ namespace SME_API_Apimanagement.Controllers
             existing.SystemCode = system.SystemCode;
             existing.SystemName = system.SystemName;
             existing.FlagActive = system.FlagActive;
+            existing.CreateBy = system.CreateBy;
             existing.UpdateBy = system.UpdateBy;
             existing.UpdateDate = DateTime.UtcNow;
 
@@ -72,6 +74,29 @@ namespace SME_API_Apimanagement.Controllers
             try
             {
                 var xdata = await _repository.GetSystemBySearch(xModels); // ใช้ await
+                if (xdata == null || !xdata.Any())
+                {
+                    return NotFound(); // หากไม่พบข้อมูล, คืนค่า 404
+                }
+                return Ok(xdata); // คืนค่า 200 พร้อมข้อมูล
+            }
+            catch (Exception ex)
+            {
+                // อาจจะใส่ log หรือรายละเอียดเพิ่มเติมของข้อผิดพลาดใน ex
+                return BadRequest(new { message = ex.Message }); // คืน 400 พร้อมข้อความข้อผิดพลาด
+            }
+        }
+
+
+        [HttpPost]
+        [Route("GetSystemBySearchMaster")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<List<MSystemModels>>> GetSystemBySearchMaster(MSystemModels xModels)
+        {
+            try
+            {
+                var xdata = await _repository.GetSystemBySearchMaster(xModels); // ใช้ await
                 if (xdata == null || !xdata.Any())
                 {
                     return NotFound(); // หากไม่พบข้อมูล, คืนค่า 404
