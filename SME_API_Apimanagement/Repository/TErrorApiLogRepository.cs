@@ -54,6 +54,9 @@ namespace SME_API_Apimanagement.Repository
                 {
                     query = query.Where(u => u.Createdate.Value.Date == xmodel.Createdate.Value.Date);
                 }
+
+                // Order by Createdate descending
+                query = query.OrderByDescending(u => u.Createdate);
                 xresult.totalList = query.Count();
                 if (xmodel.rowFetch != 0)
                     query = query.Skip(xmodel.rowOFFSet).Take(xmodel.rowFetch);

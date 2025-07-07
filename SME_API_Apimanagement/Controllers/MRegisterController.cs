@@ -139,5 +139,13 @@ public class MRegisterController : ControllerBase
         await _repository.DeleteRegisterAsync(id);
         return NoContent();
     }
+
+    [HttpPost("UpdateStatus")]
+    public async Task<IActionResult> UpdateStatus(MRegisterModels model)
+    {
+        await _repository.UpdateStatus(model);
+        return NoContent();
+    }
+
 }
 

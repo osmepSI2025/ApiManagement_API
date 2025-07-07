@@ -13,5 +13,6 @@ namespace SME_API_Apimanagement.Repository
         Task<string> UpdateOrInsertRegister(UpSertRegisterApiModels xModels);
         Task<List<MRegister>> GetRegister(MRegisterModels Orgcode);
         Task<ViewRegisterApiModels> GetRegisterBySearch(MRegisterModels xModels);
+        Task UpdateStatus(MRegisterModels models);
     }
 }

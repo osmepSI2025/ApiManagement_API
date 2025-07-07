@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc;
 using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
 using SME_API_Apimanagement.Repository;
@@ -123,10 +124,11 @@ namespace SME_API_Apimanagement.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            var result = await _repository.DeleteAsync(id);
-            return result ? Ok() : BadRequest();
+            bool result;
+          result = await _repository.DeleteAsync(id);
+            return result;
         }
 
         [HttpPost]

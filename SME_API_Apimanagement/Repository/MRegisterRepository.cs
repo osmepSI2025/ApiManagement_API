@@ -70,6 +70,7 @@ namespace SME_API_Apimanagement.Repository
                                 ApiKey = r.ApiKey,
                                 CreateDate = r.CreateDate,
                                 UpdateDate = r.UpdateDate,
+                                
 
                             };
 
@@ -97,6 +98,18 @@ namespace SME_API_Apimanagement.Repository
                 {
                     query = query.Where(u => u.UpdateDate.Value.Date == xModels.UpdateDate.Value.Date);
                 }
+                if (xModels?.StartDate != null && xModels.EndDate!=null)
+                {
+                    var start = xModels.StartDate.Value.Date;
+                    var end = xModels.EndDate.Value.Date;
+
+                    query = query.Where(u =>
+                        u.StartDate.HasValue && u.EndDate.HasValue &&
+                        u.StartDate.Value.Date <= end &&
+                        u.EndDate.Value.Date >= start && u.EndDate<= end
+                    );
+                }
+
                 result.TotalRowsList = await query.CountAsync(); // นับจำนวนแถวทั้งหมด
                 if (xModels.rowFetch != 0)
                     query = query.Skip<MRegisterModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
@@ -216,7 +229,16 @@ namespace SME_API_Apimanagement.Repository
                 await _context.SaveChangesAsync();
             }
         }
-
+        public async Task UpdateStatus(MRegisterModels models)
+        {
+            var register = await _context.MRegisters.FindAsync(models.Id);
+            if (register != null)
+            {
+                register.FlagActive = models.FlagActive;
+                register.UpdateDate = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 
 }

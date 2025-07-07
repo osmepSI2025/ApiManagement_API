@@ -127,6 +127,12 @@ namespace SME_API_Apimanagement.Controllers
                 return BadRequest(); // ถ้ามีข้อผิดพลาดให้คืน 400
             }
         }
+        [HttpPost("UpdateStatus")]
+        public async Task<bool> UpdateStatus(MSystemModels model)
+        {
+          var result=  await _repository.UpdateStatus(model);
+            return result;
+        }
     }
 
 }

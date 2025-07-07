@@ -1,4 +1,5 @@
-﻿using SME_API_Apimanagement.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
 
 namespace SME_API_Apimanagement.Repository
@@ -14,5 +15,7 @@ namespace SME_API_Apimanagement.Repository
         Task<List<MSystemModels>> GetSystemBySearchMaster(MSystemModels xModels);
         
         Task<int> UpsertSystem(MSystemModels xModels);
+        Task<bool> UpdateStatus(MSystemModels models);
+
     }
 }
