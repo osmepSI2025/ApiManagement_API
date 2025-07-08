@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
 
@@ -58,6 +59,7 @@ namespace SME_API_Apimanagement.Repository
             {
                 var query = from r in _context.MRegisters
                             join o in _context.MOrganizations on r.OrganizationCode equals o.OrganizationCode
+                            where r.FlagDelete == "N" // เงื่อนไขสำหรับ FlagDelete
                             select new MRegisterModels
                             {
                                 Id = r.Id,
@@ -219,15 +221,25 @@ namespace SME_API_Apimanagement.Repository
         }
 
         // 📌 ลบข้อมูล
-        public async Task DeleteRegisterAsync(int id)
+        public async Task<bool> DeleteRegisterAsync(int id)
         {
-            var register = await _context.MRegisters.FindAsync(id);
-            if (register != null)
+            try {
+                var register = await _context.MRegisters.FindAsync(id);
+                if (register != null)
+                {
+                    register.FlagDelete = "Y";
+                    register.UpdateDate = DateTime.UtcNow;
+                    register.UpdateBy = "System"; // หรือใช้ UserContext เพื่อดึงชื่อผู้ใช้งานที่ทำการลบ
+
+                    var result =   await _context.SaveChangesAsync();
+                }
+                return true; // คืนค่า null แทนการใช้ IErrorBoundaryLogger
+            } catch (Exception ex )
+            
             {
-                register.FlagDelete = "Y";
-                register.UpdateDate = DateTime.UtcNow;
-                await _context.SaveChangesAsync();
+                return false;
             }
+          
         }
         public async Task UpdateStatus(MRegisterModels models)
         {

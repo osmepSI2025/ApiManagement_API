@@ -27,5 +27,7 @@ namespace SME_API_Apimanagement.Models
 
         public string? OwnerSystemName { get; set; }
 
+        public string? FlagSearch { get; set; }
+
     }
 }

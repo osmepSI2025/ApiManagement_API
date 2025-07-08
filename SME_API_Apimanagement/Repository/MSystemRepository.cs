@@ -100,7 +100,7 @@ namespace SME_API_Apimanagement.Repository
                         SystemCode = "SYS-" + nextRunning.ToString("D4"),
                         SystemName = xModels.SystemName,
                         Runing = nextRunning,
-                        FlagActive = true,
+                        FlagActive = xModels.FlagActive,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         CreateDate = DateTime.Now,
@@ -294,6 +294,9 @@ namespace SME_API_Apimanagement.Repository
                     }
 
                 }
+
+               
+
                 if (xModels?.StartDate != null && xModels?.EndDate != null)
                 {
                     var start = xModels.StartDate.Value.Date;
@@ -305,12 +308,19 @@ namespace SME_API_Apimanagement.Repository
                         u.EndDate.Value.Date >= start
                     );
                 }
-                if (xModels?.FlagActive != null)
 
+                if (xModels.FlagSearch == "SEARCH")
                 {
-                    querySuperAdmin = querySuperAdmin.Where(u => u.FlagActive == xModels.FlagActive);
+                
                 }
+                else 
+                {
+                    if (xModels?.FlagActive != null)
 
+                    {
+                        querySuperAdmin = querySuperAdmin.Where(u => u.FlagActive == xModels.FlagActive);
+                    }
+                }
                 if (xModels.rowFetch != 0)
                     querySuperAdmin = querySuperAdmin.Skip<MSystemModels>(xModels.rowOFFSet).Take(xModels.rowFetch);
                 return querySuperAdmin.ToList();

@@ -134,10 +134,10 @@ public class MRegisterController : ControllerBase
 
     // 📌 DELETE: ลบข้อมูล
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteRegister(int id)
+    public async Task<bool> DeleteRegister(int id)
     {
-        await _repository.DeleteRegisterAsync(id);
-        return NoContent();
+       var result= await _repository.DeleteRegisterAsync(id);
+        return result;
     }
 
     [HttpPost("UpdateStatus")]

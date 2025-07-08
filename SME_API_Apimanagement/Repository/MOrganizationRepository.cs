@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
 
@@ -197,7 +198,26 @@ namespace SME_API_Apimanagement.Repository
                 return 0;
             }
         }
-
+       
+        public async Task<bool> UpdateStatusOrg(MOrganizationModels model)
+        {
+            try
+            {
+                var organization = await _context.MOrganizations.FindAsync(model.OrganizationId);
+                if (organization != null)
+                {
+                    organization.FlagActive = model.FlagActive;
+                    organization.UpdateDate = DateTime.UtcNow;
+                    organization.UpdateBy = model.UpdateBy;
+                    await _context.SaveChangesAsync();
+                }
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                return false;
+            }
+        }
     }
 
 }

@@ -9,7 +9,7 @@ namespace SME_API_Apimanagement.Repository
         Task<MRegister> GetRegisterByIdAsync(string id);
         // Task AddRegisterAsync(MRegister register);
         Task UpdateRegisterAsync(MRegister register);
-        Task DeleteRegisterAsync(int id);
+        Task<bool>  DeleteRegisterAsync(int id);
         Task<string> UpdateOrInsertRegister(UpSertRegisterApiModels xModels);
         Task<List<MRegister>> GetRegister(MRegisterModels Orgcode);
         Task<ViewRegisterApiModels> GetRegisterBySearch(MRegisterModels xModels);

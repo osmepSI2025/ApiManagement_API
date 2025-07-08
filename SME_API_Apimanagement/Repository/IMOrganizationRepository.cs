@@ -1,4 +1,5 @@
-﻿using SME_API_Apimanagement.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
 
 namespace SME_API_Apimanagement.Repository
@@ -12,5 +13,6 @@ namespace SME_API_Apimanagement.Repository
         Task DeleteAsync(int id);
         Task<List<MOrganizationModels>> GetOrgBySeach(MOrganizationModels xModels);
         Task<int> UpsertOrg(MOrganizationModels xModels);
+        Task<bool> UpdateStatusOrg(MOrganizationModels model);
     }
 }

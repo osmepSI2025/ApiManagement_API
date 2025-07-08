@@ -138,6 +138,13 @@ namespace SME_API_Apimanagement.Controllers
                 return BadRequest(); // Return 400 in case of an error
             }
         }
+
+        [HttpPost("UpdateStatusOrg")]
+        public async Task<bool> UpdateStatusOrg(MOrganizationModels model)
+        {
+          var result =  await _repository.UpdateStatusOrg(model);
+            return result;
+        }
     }
 
 }
