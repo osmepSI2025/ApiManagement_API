@@ -26,4 +26,6 @@ public partial class MRegister
     public DateTime? UpdateDate { get; set; }
 
     public string? ApiKey { get; set; }
+
+    public string? Note { get; set; }
 }

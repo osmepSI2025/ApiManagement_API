@@ -38,7 +38,7 @@ namespace SME_API_Apimanagement.Repository
         {
             try
             {
-                var query = _context.MRegisters.AsQueryable(); // ใช้ IQueryable ให้ทำงานที่ Server-side
+                var query = _context.MRegisters.AsQueryable().Where(x=>x.FlagDelete=="N"); // ใช้ IQueryable ให้ทำงานที่ Server-side
 
                 if (!string.IsNullOrEmpty(xModels?.OrganizationCode))
                 {
@@ -72,7 +72,7 @@ namespace SME_API_Apimanagement.Repository
                                 ApiKey = r.ApiKey,
                                 CreateDate = r.CreateDate,
                                 UpdateDate = r.UpdateDate,
-                                
+                                Note = r.Note,
 
                             };
 
@@ -157,6 +157,7 @@ namespace SME_API_Apimanagement.Repository
                             {
                                 queryUpdate.UpdateBy = xModels.MRegister.UpdateBy;
                             }
+                            queryUpdate.Note = xModels.MRegister.Note;
 
                             queryUpdate.UpdateDate = DateTime.Now;
                         }
@@ -175,6 +176,7 @@ namespace SME_API_Apimanagement.Repository
                         ApiKey = Guid.NewGuid().ToString(),
                         FlagActive = true,
                         FlagDelete = "N",
+                        Note = xModels.MRegister.Note,
 
                         UpdateDate = DateTime.Now,
                         CreateDate = DateTime.Now,
@@ -216,6 +218,10 @@ namespace SME_API_Apimanagement.Repository
                 existingRegister.FlagDelete = register.FlagDelete;
                 existingRegister.UpdateBy = register.UpdateBy;
                 existingRegister.UpdateDate = DateTime.Now;
+                existingRegister.ApiKey = register.ApiKey;
+                existingRegister.Note = register.Note;
+                existingRegister.UpdateDate = DateTime.Now;
+
                 await _context.SaveChangesAsync();
             }
         }

@@ -17,6 +17,8 @@
         public int rowOFFSet { get; set; }
         public int rowFetch { get; set; }
         public string? Token { get; set; }
+
+        public string? Note { get; set; }
     }
 
    
