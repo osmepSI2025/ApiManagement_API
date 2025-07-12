@@ -14,5 +14,6 @@ namespace SME_API_Apimanagement.Repository
         Task<List<TApiPermisionMappingModels>> GetAllByBusinessIdAsync(searchApiPermisionRespone models);
         Task<List<TApiPermisionMappingModels>> GetTApiMappingBySearch(TApiPermisionMappingModels xModels);
         Task<List<TApiPermisionMappingModels>> GetCheckTApiMappingBySearch(TApiPermisionMappingModels xModels);
+        Task<int> DeleteByOrganizationCode(string organizationCode);
     }
 }

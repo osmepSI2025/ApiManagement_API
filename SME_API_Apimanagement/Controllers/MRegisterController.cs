@@ -90,6 +90,7 @@ public class MRegisterController : ControllerBase
             string xdata = await _repository.UpdateOrInsertRegister(xModels); // ใช้ await
             if (xdata != "")
             {
+                
                 int TApi = await _repTApi.UpdateOrInsertTApiMapping(xModels, xdata);
             }
             return Ok(200); // คืนค่า 200 พร้อมข้อมูล
