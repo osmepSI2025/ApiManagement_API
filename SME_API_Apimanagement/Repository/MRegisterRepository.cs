@@ -263,9 +263,12 @@ namespace SME_API_Apimanagement.Repository
         // 📌 ลบข้อมูล
         public async Task<bool> DeleteRegisterAsync(int id)
         {
+
             try
             {
                 var register = await _context.MRegisters.FindAsync(id);
+                var delmap = await _apiMappingRepository.DeleteByOrganizationCodeAndRegister(register.OrganizationCode,id);
+              
                 if (register != null)
                 {
                     _context.MRegisters.Remove(register);

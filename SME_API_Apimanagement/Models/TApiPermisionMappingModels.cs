@@ -41,6 +41,7 @@ namespace SME_API_Apimanagement.Models
         public string? ApiUrlUatOundbound { get; set; }
         public string? ApiUrlProdOundbound { get; set; }
         public string? ApiServiceCode { get; set; }
+        public int? RegisterId { get; set; }
     }
     public partial class ApiPermisionApiRespone
     {

@@ -59,13 +59,30 @@ namespace SME_API_Apimanagement.Repository
 
 
         }
+
+        public async Task<int> DeleteByOrganizationCodeAndRegister(string org, int registerId)
+        {
+            var records = _context.TApiPermisionMappings.Where(x =>  x.RegisterId == registerId && x.OrganizationCode == org);
+
+            if (records.Any())
+            {
+                _context.TApiPermisionMappings.RemoveRange(records);
+                return await _context.SaveChangesAsync();
+            }
+            else
+            {
+                return 1;
+            }
+
+
+        }
         public async Task<int> UpdateOrInsertTApiMapping(UpSertRegisterApiModels xModels, string apiKey)
         {
             int success = 0;
 
             try
             {
-                var result = await DeleteByOrganizationCode(xModels.MRegister.OrganizationCode); // เรียกใช้ await
+                var result = await DeleteByOrganizationCodeAndRegister(xModels.MRegister.OrganizationCode,xModels.MRegister.Id); // เรียกใช้ await
 
                 if (result != 0)
                 {
@@ -83,9 +100,10 @@ namespace SME_API_Apimanagement.Repository
                             UpdateDate = DateTime.Now,
                             CreateDate = DateTime.Now,
                             CreateBy = xModels.MRegister.CreateBy,
-                            UpdateBy = xModels.MRegister.CreateBy,
+                            UpdateBy = xModels.MRegister.UpdateBy,
                             SystemApiMappingId = item.SystemApiMappingId,
-                            
+                            RegisterId = xModels.MRegister.Id,
+
 
                         };
 
