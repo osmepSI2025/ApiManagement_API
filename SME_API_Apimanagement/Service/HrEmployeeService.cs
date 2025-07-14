@@ -262,7 +262,7 @@ namespace SME_API_Apimanagement.Service
             {
                 buId = "SME001";
             }
-            else 
+            else
             {
                 buId = models.BusinessUnitId;
             }
@@ -275,25 +275,36 @@ namespace SME_API_Apimanagement.Service
             };
             var lDepartment = await GetDepartment();
             var lPosition = await GetPosition();
-            
-            var lEmployee = await GetEmpByBu(buId);
+
+            var lempinTable = await _repositoryUserManagement.GetAllAsync();
+
+            var setEmpHr = await GetEmpByBu(buId);
+
+            // Remove employees from setEmpHr.Results that exist in lempinTable based on EmployeeId/EmployeeCode
+            var lEmployee = setEmpHr.Results
+                .Where(e => !lempinTable.Any(t => t.EmployeeCode == e.EmployeeId))
+                .ToList();
             if (!string.IsNullOrEmpty(models.EmployeeName))
             {
-                var emolist = lEmployee.Results
-                        .Where(e => e.NameTh != null && e.NameTh.Contains(models.EmployeeName, StringComparison.OrdinalIgnoreCase))
+                var emolist = lEmployee
+                    .Where(e => e.NameTh != null && e.NameTh.Contains(models.EmployeeName, StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
                 if (emolist.Count != 0)
                 {
-                    lEmployee.Results = emolist; // Update the Results property instead of reassigning the entire object
+                    lEmployee = emolist; // Update the lEmployee list directly
+                }
+                else
+                {
+                    return new ViewEmployeeRoleModels();
                 }
             }
-        
-            vm.TotalRowsList = lEmployee.Results.Count();
+
+            vm.TotalRowsList = lEmployee.Count();
             if (lEmployee != null)
             {
                 // Apply paging
-                var pagedResults = lEmployee.Results
+                var pagedResults = lEmployee
                     .Skip(models.rowOFFSet)
                     .Take(models.rowFetch)
                     .ToList();
@@ -301,7 +312,8 @@ namespace SME_API_Apimanagement.Service
                 {
                     foreach (var item in pagedResults)
                     {
-                        try {
+                        try
+                        {
                             var EmpDetail = await GetEmpDetail(item.EmployeeId);
                             if (EmpDetail != null)
                             {
@@ -322,7 +334,7 @@ namespace SME_API_Apimanagement.Service
                                 };
                                 result.Add(employeeModels);
                             }
-                            else 
+                            else
                             {
                                 employeeModels = new EmployeeRoleModels
                                 {
@@ -331,8 +343,8 @@ namespace SME_API_Apimanagement.Service
                                     FirstNameTh = item.FirstNameTh ?? "-",
                                     LastNameTh = item.LastNameTh ?? "-",
                                     BusinessUnitId = item.BusinessUnitId,
-                                    BusinessUnitName =  "-",
-                                    PositionId ="-",
+                                    BusinessUnitName = "-",
+                                    PositionId = "-",
                                     PositionName = "-",
                                     EmployeeRole = "-",
                                     //rowFetch = models.rowFetch,
@@ -341,13 +353,14 @@ namespace SME_API_Apimanagement.Service
                                 };
                                 result.Add(employeeModels);
                             }
-                           
-                        } catch (Exception ex) 
+
+                        }
+                        catch (Exception ex)
                         {
                             employeeModels = new EmployeeRoleModels
                             {
 
-                             
+
                                 EmployeeId = item.EmployeeId,
                                 FirstNameTh = item.FirstNameTh ?? "-",
                                 LastNameTh = item.LastNameTh ?? "-",
@@ -361,8 +374,8 @@ namespace SME_API_Apimanagement.Service
                             };
                             result.Add(employeeModels);
                         }
-                       
-                   
+
+
                     }
                 }
                 vm.listEmployeeRoleModels = result;

@@ -48,7 +48,7 @@ namespace SME_API_Apimanagement.Controllers
 
             existing.SystemCode = system.SystemCode;
             existing.SystemName = system.SystemName;
-            existing.FlagActive = system.FlagActive;
+            existing.FlagActive = system.FlagActive ?? false;
             existing.CreateBy = system.CreateBy;
             existing.UpdateBy = system.UpdateBy;
             existing.UpdateDate = DateTime.UtcNow;

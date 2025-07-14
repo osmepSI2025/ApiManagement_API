@@ -108,7 +108,7 @@ namespace SME_API_Apimanagement.Repository
                         ApiRequestExample = xModels.TSystemAPI.ApiRequestExample,
                         ApiResponseExample = xModels.TSystemAPI.ApiResponseExample,
                         ApiNote = xModels.TSystemAPI.ApiNote,
-                        FlagActive = true,
+                        FlagActive = xModels.TSystemAPI.FlagActive,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         UpdateBy = xModels.TSystemAPI.UpdateBy,
@@ -235,5 +235,8 @@ namespace SME_API_Apimanagement.Repository
                 return new List<TSystemApiMappingModels>();
             }
         }
+
+      
+
     }
 }

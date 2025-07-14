@@ -16,6 +16,7 @@ namespace SME_API_Apimanagement.Repository
         
         Task<int> UpsertSystem(MSystemModels xModels);
         Task<bool> UpdateStatus(MSystemModels models);
+        Task<bool> UpdateStatusByCode(MSystemModels models);
 
     }
 }

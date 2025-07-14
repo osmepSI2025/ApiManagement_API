@@ -58,7 +58,10 @@ namespace SME_API_Apimanagement.Repository
             {
                 existing.ParentOrganizationId = organization.ParentOrganizationId;
             }
-         
+            if (organization.FlagActive!=null)
+            {
+                existing.FlagActive = organization.FlagActive;
+            }
             existing.UpdateBy = organization.UpdateBy;
             existing.UpdateDate = DateTime.Now;
 

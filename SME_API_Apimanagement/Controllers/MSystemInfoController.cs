@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SME_API_Apimanagement.Entities;
 using SME_API_Apimanagement.Models;
+using SME_API_Apimanagement.Repository;
 using SME_API_Apimanagement.Services;
 using System;
 using System.Threading.Tasks;
@@ -12,10 +13,11 @@ namespace SME_API_Apimanagement.Controllers
     public class MSystemInfoController : ControllerBase
     {
         private readonly IMSystemInfoService _service;
-
-        public MSystemInfoController(IMSystemInfoService service)
+        private readonly IMSystemRepository _mSystem;
+        public MSystemInfoController(IMSystemInfoService service, IMSystemRepository mSystem)
         {
             _service = service;
+            _mSystem = mSystem;
         }
 
         [HttpGet]
@@ -129,7 +131,14 @@ namespace SME_API_Apimanagement.Controllers
                 };
                 var systemInfo = await _service.CheckSysitemInfoUpsert(msystemInfo);
 
-
+                //update 
+                if (systemInfo == 1) 
+                {
+                    MSystemModels mSystem = new MSystemModels();
+                    mSystem.SystemCode = xModels.SystemCode;
+                    mSystem.FlagActive = xModels.FlagActive;
+                    var sysMapAPI = await _mSystem.UpdateStatusByCode(mSystem);
+                }
                 return Ok(systemInfo); // คืนค่า 200 พร้อมข้อมูล
             }
             catch (Exception ex)

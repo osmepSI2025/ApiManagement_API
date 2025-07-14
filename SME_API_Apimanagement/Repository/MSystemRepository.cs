@@ -37,7 +37,7 @@ namespace SME_API_Apimanagement.Repository
 
             // อัปเดตเฉพาะ field ที่ต้องการ
             entity.SystemName = model.SystemName;
-            entity.FlagActive = model.FlagActive;
+            entity.FlagActive = model.FlagActive??false;
             entity.UpdateDate = DateTime.Now;
             entity.UpdateBy = model.UpdateBy;
             entity.OwnerSystemCode = model.OwnerSystemCode;
@@ -78,7 +78,7 @@ namespace SME_API_Apimanagement.Repository
                     {
                         Id = result.Id,
                         SystemName = xModels.SystemName,
-                        FlagActive = xModels.FlagActive,
+                        FlagActive = xModels.FlagActive??false,
                         UpdateBy = xModels.UpdateBy,
                         OwnerSystemCode = xModels.OwnerSystemCode,
                         StartDate = xModels.StartDate,
@@ -100,7 +100,7 @@ namespace SME_API_Apimanagement.Repository
                         SystemCode = "SYS-" + nextRunning.ToString("D4"),
                         SystemName = xModels.SystemName,
                         Runing = nextRunning,
-                        FlagActive = xModels.FlagActive,
+                        FlagActive = xModels.FlagActive??false,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         CreateDate = DateTime.Now,
@@ -147,7 +147,7 @@ namespace SME_API_Apimanagement.Repository
                                     CreateBy = s.CreateBy,
                                     FlagDelete = s.FlagDelete,
                                     UpdateBy = s.UpdateBy,
-                                    FlagActive = s.FlagActive,
+                                    FlagActive = s.FlagActive ?? false,
                                     IsSelected = s.FlagActive ?? false,
                                     SystemCode = s.SystemCode,
                                     SystemName = s.SystemName,
@@ -205,7 +205,7 @@ namespace SME_API_Apimanagement.Repository
                                     CreateBy = s.CreateBy,
                                     FlagDelete = s.FlagDelete,
                                     UpdateBy = s.UpdateBy,
-                                    FlagActive = s.FlagActive,
+                                    FlagActive = s.FlagActive?? false,
                                     IsSelected = s.FlagActive ?? false,
                                     SystemCode = s.SystemCode,
                                     SystemName = s.SystemName,
@@ -261,7 +261,7 @@ namespace SME_API_Apimanagement.Repository
                                            CreateBy = s.CreateBy,
                                            FlagDelete = s.FlagDelete,
                                            UpdateBy = s.UpdateBy,
-                                           FlagActive = s.FlagActive,
+                                           FlagActive = s.FlagActive?? false,
                                            IsSelected = s.FlagActive ?? false,
                                            SystemCode = s.SystemCode,
                                            SystemName = s.SystemName,
@@ -342,6 +342,18 @@ namespace SME_API_Apimanagement.Repository
                     register.UpdateDate = DateTime.UtcNow;
                     await _context.SaveChangesAsync();
                 }
+                // Map 'register' (MSystem) to 'MSystemModels' before passing it to UpdateStatusByCode
+                var mappedModel = new MSystemModels
+                {
+                    Id = register.Id,
+                    SystemCode = register.SystemCode,
+                 
+                    FlagActive = models.FlagActive,
+                    FlagDelete = register.FlagDelete,
+            
+                };
+
+                await UpdateStatusByCode(mappedModel);
                 return true;
             } catch (Exception ex) 
             
@@ -349,6 +361,26 @@ namespace SME_API_Apimanagement.Repository
                 return false;
             }
           
+        }
+        public async Task<bool> UpdateStatusByCode(MSystemModels models)
+        {
+            try
+            {
+                var register = await _context.MSystems.Where(x=>x.SystemCode == models.SystemCode).FirstAsync();
+                if (register != null)
+                {
+                    register.FlagActive = models.FlagActive;
+                    register.UpdateDate = DateTime.UtcNow;
+                    await _context.SaveChangesAsync();
+                }
+                return true;
+            }
+            catch (Exception ex)
+
+            {
+                return false;
+            }
+
         }
     }
 }

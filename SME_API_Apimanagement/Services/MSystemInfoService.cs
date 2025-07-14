@@ -46,7 +46,7 @@ namespace SME_API_Apimanagement.Services
                 {
                     var xRaw = new MSystemInfo
                     {
-                        FlagActive = true,
+                        FlagActive = xModels.FlagActive,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         UpdateBy = xModels.CreateBy,
@@ -74,7 +74,7 @@ namespace SME_API_Apimanagement.Services
                     var xRaw = new MSystemInfo
                     {
                         Id = systemInfo.Id, // ใช้ Id ที่มีอยู่แล้ว
-                        FlagActive = true,
+                        FlagActive = xModels.FlagActive,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         UpdateBy = xModels.CreateBy,
