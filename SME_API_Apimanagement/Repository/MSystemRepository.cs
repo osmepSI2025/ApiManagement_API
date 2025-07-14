@@ -288,10 +288,10 @@ namespace SME_API_Apimanagement.Repository
 
                 if (xModels.EmployeeRole != "SUPERADMIN")
                 {
-                    if (xModels?.CreateBy != null)
-                    {
-                        querySuperAdmin = querySuperAdmin.Where(u => u.CreateBy == xModels.CreateBy);
-                    }
+                    //if (xModels?.CreateBy != null)
+                    //{
+                    //    querySuperAdmin = querySuperAdmin.Where(u => u.CreateBy == xModels.CreateBy);
+                    //}
 
                 }
 

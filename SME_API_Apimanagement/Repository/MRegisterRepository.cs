@@ -114,6 +114,7 @@ namespace SME_API_Apimanagement.Repository
 
                     query = query.Where(u =>
                         u.StartDate.HasValue && u.EndDate.HasValue &&
+                        u.StartDate.Value.Date >= start &&
                         u.StartDate.Value.Date <= end &&
                         u.EndDate.Value.Date >= start && u.EndDate <= end
                     );
