@@ -11,23 +11,18 @@ namespace SME_API_Apimanagement.Repository
         private readonly IMSystemInfoService _mSystemInfoService;
 
         public TSystemAPIRepository(ApiMangeDBContext context
-            ,IMSystemInfoService mSystemInfoService)
+            , IMSystemInfoService mSystemInfoService)
         {
             _context = context;
-            _mSystemInfoService = mSystemInfoService
-              ;
+            _mSystemInfoService = mSystemInfoService;
         }
 
         public async Task<IEnumerable<TSystemApiMapping>> GetAllAsync() =>
             await _context.TSystemApiMappings.Where(x => x.FlagDelete == "N").ToListAsync();
 
-        //public async Task<TSystemApiMapping> GetByIdAsync(int id) =>
-        //  await _context.TSystemApiMappings
-        //      .AsNoTracking() // ✅ ป้องกันปัญหา Entity Tracking ซ้ำ
-        //      .FirstOrDefaultAsync(x => x.Id == id && x.FlagDelete == "N");
         public async Task<TSystemApiMapping> GetByIdAsync(int id) =>
-    await _context.TSystemApiMappings.AsNoTracking()
-        .FirstOrDefaultAsync(x => x.Id == id);
+            await _context.TSystemApiMappings.AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task AddAsync(TSystemApiMapping api)
         {
@@ -35,45 +30,44 @@ namespace SME_API_Apimanagement.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(TSystemApiMapping api)
+        public async Task<int> UpdateAsync(TSystemApiMapping api)
         {
-            int result = 0;
             try
             {
-                _context.TSystemApiMappings.Update(api);
-                // กำหนดเฉพาะฟิลด์ที่ต้องการให้อัปเดต
-                _context.Entry(api).Property(x => x.ApiKey).IsModified = true;
-                _context.Entry(api).Property(x => x.OwnerSystemCode).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiServiceName).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiMethod).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiRequestExample).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiResponseExample).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiNote).IsModified = true;
-                _context.Entry(api).Property(x => x.FlagActive).IsModified = true;
-                _context.Entry(api).Property(x => x.FlagDelete).IsModified = true;
-                _context.Entry(api).Property(x => x.UpdateBy).IsModified = true;
-                _context.Entry(api).Property(x => x.UpdateDate).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiPassword).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiServiceType).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiUrlProdInbound).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiUrlProdOutbound).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiUrlUatInbound).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiUrlUatOutbound).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiUser).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiResponseDescription).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiRequestDescription).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiRequestParamater).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiRequestParamaterType).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiResponseParamater).IsModified = true;
-                _context.Entry(api).Property(x => x.ApiResponseParamaterType).IsModified = true;
-                 
+                var entity = await _context.TSystemApiMappings.FirstOrDefaultAsync(x => x.Id == api.Id);
+                if (entity == null) return 0;
+                entity.ApiKey = api.ApiKey;
+                entity.OwnerSystemCode = api.OwnerSystemCode;
+                entity.ApiServiceName = api.ApiServiceName;
+                entity.ApiMethod = api.ApiMethod;
+                entity.ApiRequestExample = api.ApiRequestExample;
+                entity.ApiResponseExample = api.ApiResponseExample;
+                entity.ApiNote = api.ApiNote;
+                entity.FlagActive = api.FlagActive;
+                entity.FlagDelete = api.FlagDelete;
+                entity.UpdateBy = api.UpdateBy;
+                entity.UpdateDate = DateTime.Now;
+                entity.ApiPassword = api.ApiPassword;
+                entity.ApiServiceType = api.ApiServiceType;
+                entity.ApiUrlProdInbound = api.ApiUrlProdInbound;
+                entity.ApiUrlProdOutbound = api.ApiUrlProdOutbound;
+                entity.ApiUrlUatInbound = api.ApiUrlUatInbound;
+                entity.ApiUrlUatOutbound = api.ApiUrlUatOutbound;
+                entity.ApiUser = api.ApiUser;
+                entity.ApiResponseDescription = api.ApiResponseDescription;
+                entity.ApiRequestDescription = api.ApiRequestDescription;
+                entity.ApiRequestParamater = api.ApiRequestParamater;
+                entity.ApiRequestParamaterType = api.ApiRequestParamaterType;
+                entity.ApiResponseParamater = api.ApiResponseParamater;
+                entity.ApiResponseParamaterType = api.ApiResponseParamaterType;
+                entity.EndPoint = api.EndPoint;
+                entity.ApiServiceCode = api.ApiServiceCode;
 
-                result = await _context.SaveChangesAsync();
-
+                return await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-
+                return 0;
             }
         }
 
@@ -84,27 +78,23 @@ namespace SME_API_Apimanagement.Repository
                 var api = await _context.TSystemApiMappings.FindAsync(id);
                 if (api != null)
                 {
-
                     _context.TSystemApiMappings.Remove(api);
                     await _context.SaveChangesAsync();
-                 
                 }
                 return true;
             }
-            catch 
+            catch
             {
-                return false;
+                return false;   
             }
-        
-
-            
         }
+
         public async Task<int> UpsertSystemApi(UpSertSystemApiModels xModels)
         {
             int success = 0;
             try
             {
-                var result = await GetByIdAsync(xModels.TSystemAPI.Id); // เรียกใช้ await
+                var result = await GetByIdAsync(xModels.TSystemAPI.Id);
 
                 if (result != null)
                 {
@@ -114,8 +104,6 @@ namespace SME_API_Apimanagement.Repository
                         OwnerSystemCode = xModels.TSystemAPI.OwnerSystemCode,
                         ApiServiceName = xModels.TSystemAPI.ApiServiceName,
                         ApiMethod = xModels.TSystemAPI.ApiMethod,
-                        //ApiUrlProd = xModels.TSystemAPI.ApiUrlProd,
-                        //ApiUrlUat = xModels.TSystemAPI.ApiUrlUat,
                         ApiKey = xModels.TSystemAPI.ApiKey,
                         ApiRequestExample = xModels.TSystemAPI.ApiRequestExample,
                         ApiResponseExample = xModels.TSystemAPI.ApiResponseExample,
@@ -123,29 +111,25 @@ namespace SME_API_Apimanagement.Repository
                         FlagActive = true,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
-                        UpdateBy = xModels.TSystemAPI.UpdateBy
-                        ,
-                        CreateDate = DateTime.Now
-                        //,
-                     //   CreateBy = xModels.TSystemAPI.CreateBy
-                        ,ApiPassword = xModels.TSystemAPI.ApiPassword
-                        ,ApiServiceType = xModels.TSystemAPI.ApiServiceType
-                        ,ApiUrlProdInbound = xModels.TSystemAPI.ApiUrlProdInbound
-                        ,ApiUrlProdOutbound = xModels.TSystemAPI.ApiUrlProdOutbound
-                        ,ApiUrlUatInbound = xModels.TSystemAPI.ApiUrlUatInbound
-                        ,ApiUrlUatOutbound = xModels.TSystemAPI.ApiUrlUatOutbound
-                        ,ApiUser = xModels.TSystemAPI.ApiUser
-                        ,ApiResponseDescription = xModels.TSystemAPI.ApiResponseDescription
-                        ,ApiRequestDescription = xModels.TSystemAPI.ApiRequestDescription
-                        ,ApiRequestParamater = xModels.TSystemAPI.ApiRequestParamater
-                        ,ApiRequestParamaterType = xModels.TSystemAPI.ApiRequestParamaterType
-                        ,ApiResponseParamater = xModels.TSystemAPI.ApiResponseParamater
-                        ,ApiResponseParamaterType = xModels.TSystemAPI.ApiResponseParamaterType
-                       
-                        ,EndPoint = xModels.TSystemAPI.EndPoint
-                        , ApiServiceCode = xModels.TSystemAPI.ApiServiceCode
+                        UpdateBy = xModels.TSystemAPI.UpdateBy,
+                        CreateDate = DateTime.Now,
+                        ApiPassword = xModels.TSystemAPI.ApiPassword,
+                        ApiServiceType = xModels.TSystemAPI.ApiServiceType,
+                        ApiUrlProdInbound = xModels.TSystemAPI.ApiUrlProdInbound,
+                        ApiUrlProdOutbound = xModels.TSystemAPI.ApiUrlProdOutbound,
+                        ApiUrlUatInbound = xModels.TSystemAPI.ApiUrlUatInbound,
+                        ApiUrlUatOutbound = xModels.TSystemAPI.ApiUrlUatOutbound,
+                        ApiUser = xModels.TSystemAPI.ApiUser,
+                        ApiResponseDescription = xModels.TSystemAPI.ApiResponseDescription,
+                        ApiRequestDescription = xModels.TSystemAPI.ApiRequestDescription,
+                        ApiRequestParamater = xModels.TSystemAPI.ApiRequestParamater,
+                        ApiRequestParamaterType = xModels.TSystemAPI.ApiRequestParamaterType,
+                        ApiResponseParamater = xModels.TSystemAPI.ApiResponseParamater,
+                        ApiResponseParamaterType = xModels.TSystemAPI.ApiResponseParamaterType,
+                        EndPoint = xModels.TSystemAPI.EndPoint,
+                        ApiServiceCode = xModels.TSystemAPI.ApiServiceCode
                     };
-                    var updatex = UpdateAsync(xRaw);
+                    success = await UpdateAsync(xRaw);
                 }
                 else
                 {
@@ -154,8 +138,6 @@ namespace SME_API_Apimanagement.Repository
                         OwnerSystemCode = xModels.TSystemAPI.OwnerSystemCode,
                         ApiServiceName = xModels.TSystemAPI.ApiServiceName,
                         ApiMethod = xModels.TSystemAPI.ApiMethod,
-                        //ApiUrlProd = xModels.TSystemAPI.ApiUrlProd,
-                        //ApiUrlUat = xModels.TSystemAPI.ApiUrlUat,
                         ApiKey = xModels.TSystemAPI.ApiKey,
                         ApiRequestExample = xModels.TSystemAPI.ApiRequestExample,
                         ApiResponseExample = xModels.TSystemAPI.ApiResponseExample,
@@ -165,51 +147,44 @@ namespace SME_API_Apimanagement.Repository
                         UpdateDate = DateTime.Now,
                         CreateDate = DateTime.Now,
                         CreateBy = xModels.TSystemAPI.CreateBy,
-                        UpdateBy = xModels.TSystemAPI.CreateBy
-                        ,
-                        ApiPassword = xModels.TSystemAPI.ApiPassword
-                        ,ApiServiceType = xModels.TSystemAPI.ApiServiceType
-                        ,
-                        ApiUrlProdInbound = xModels.TSystemAPI.ApiUrlProdInbound
-                        ,ApiUrlProdOutbound = xModels.TSystemAPI.ApiUrlProdOutbound
-                        ,ApiUrlUatInbound = xModels.TSystemAPI.ApiUrlUatInbound
-                        , EndPoint = xModels.TSystemAPI.EndPoint
-                        ,ApiUrlUatOutbound = xModels.TSystemAPI.ApiUrlUatOutbound
-                        ,ApiUser = xModels.TSystemAPI.ApiUser
-                        ,ApiResponseDescription = xModels.TSystemAPI.ApiResponseDescription
-                        ,ApiRequestDescription = xModels.TSystemAPI.ApiRequestDescription
-                        ,ApiRequestParamater = xModels.TSystemAPI.ApiRequestParamater
-                        ,ApiRequestParamaterType = xModels.TSystemAPI.ApiRequestParamaterType
-                        ,ApiResponseParamater = xModels.TSystemAPI.ApiResponseParamater
-                        ,ApiResponseParamaterType = xModels.TSystemAPI.ApiResponseParamaterType
-                 ,ApiServiceCode = xModels.TSystemAPI.ApiServiceCode
-
+                        UpdateBy = xModels.TSystemAPI.CreateBy,
+                        ApiPassword = xModels.TSystemAPI.ApiPassword,
+                        ApiServiceType = xModels.TSystemAPI.ApiServiceType,
+                        ApiUrlProdInbound = xModels.TSystemAPI.ApiUrlProdInbound,
+                        ApiUrlProdOutbound = xModels.TSystemAPI.ApiUrlProdOutbound,
+                        ApiUrlUatInbound = xModels.TSystemAPI.ApiUrlUatInbound,
+                        EndPoint = xModels.TSystemAPI.EndPoint,
+                        ApiUrlUatOutbound = xModels.TSystemAPI.ApiUrlUatOutbound,
+                        ApiUser = xModels.TSystemAPI.ApiUser,
+                        ApiResponseDescription = xModels.TSystemAPI.ApiResponseDescription,
+                        ApiRequestDescription = xModels.TSystemAPI.ApiRequestDescription,
+                        ApiRequestParamater = xModels.TSystemAPI.ApiRequestParamater,
+                        ApiRequestParamaterType = xModels.TSystemAPI.ApiRequestParamaterType,
+                        ApiResponseParamater = xModels.TSystemAPI.ApiResponseParamater,
+                        ApiResponseParamaterType = xModels.TSystemAPI.ApiResponseParamaterType,
+                        ApiServiceCode = xModels.TSystemAPI.ApiServiceCode
                     };
 
                     _context.TSystemApiMappings.Add(xRaw);
                     await _context.SaveChangesAsync();
-                    success = xRaw.Id; // ดึงค่า Id หลัง Save
-
-
-                    success = await _context.SaveChangesAsync(); // เรียก SaveChangesAsync ครั้งเดียว
+                    success = xRaw.Id;
                 }
-
             }
             catch (Exception ex)
             {
-                success = 0; // ถ้า Error ให้ return 0
+                success = 0;
             }
 
             return success;
         }
-    
+
         public async Task<List<TSystemApiMappingModels>> GetTSystemMappingBySearch(TSystemApiMappingModels xModels)
         {
             try
             {
                 var query = (from r in _context.TSystemApiMappings
                              join s in _context.MSystems on r.OwnerSystemCode equals s.SystemCode
-                             where r.FlagDelete =="N"
+                             where r.FlagDelete == "N"
                              select new TSystemApiMappingModels
                              {
                                  Id = r.Id,
@@ -220,41 +195,35 @@ namespace SME_API_Apimanagement.Repository
                                  ApiRequestExample = r.ApiRequestExample,
                                  ApiResponseExample = r.ApiResponseExample,
                                  ApiServiceName = r.ApiServiceName,
-                               
                                  CreateBy = r.CreateBy,
                                  FlagDelete = r.FlagDelete,
                                  UpdateBy = r.UpdateBy,
                                  ApiKey = r.ApiKey,
                                  CreateDate = r.CreateDate,
                                  UpdateDate = r.UpdateDate,
-                                   ApiPassword = r.ApiPassword,
-                                    ApiServiceType = r.ApiServiceType,
-                                     ApiUrlProdInbound = r.ApiUrlProdInbound
-                                     , ApiUrlProdOutbound = r.ApiUrlProdOutbound
-                                      ,ApiUrlUatInbound = r.ApiUrlUatInbound
-                                      ,ApiUrlUatOutbound = r.ApiUrlUatOutbound
-                                      , ApiUser = r.ApiUser
-                                      , ApiResponseDescription = r.ApiResponseDescription
-                                      , ApiRequestDescription = r.ApiRequestDescription
-                                      ,ApiRequestParamater = r.ApiRequestParamater
-                                      ,ApiRequestParamaterType = r.ApiRequestParamaterType
-                                      ,ApiResponseParamater = r.ApiResponseParamater
-                                      ,ApiResponseParamaterType = r.ApiResponseParamaterType
-                                    
-                                      ,EndPoint = r.EndPoint
-                                      ,ApiServiceCode = r.ApiServiceCode
+                                 ApiPassword = r.ApiPassword,
+                                 ApiServiceType = r.ApiServiceType,
+                                 ApiUrlProdInbound = r.ApiUrlProdInbound,
+                                 ApiUrlProdOutbound = r.ApiUrlProdOutbound,
+                                 ApiUrlUatInbound = r.ApiUrlUatInbound,
+                                 ApiUrlUatOutbound = r.ApiUrlUatOutbound,
+                                 ApiUser = r.ApiUser,
+                                 ApiResponseDescription = r.ApiResponseDescription,
+                                 ApiRequestDescription = r.ApiRequestDescription,
+                                 ApiRequestParamater = r.ApiRequestParamater,
+                                 ApiRequestParamaterType = r.ApiRequestParamaterType,
+                                 ApiResponseParamater = r.ApiResponseParamater,
+                                 ApiResponseParamaterType = r.ApiResponseParamaterType,
+                                 EndPoint = r.EndPoint,
+                                 ApiServiceCode = r.ApiServiceCode
+                             }).AsQueryable();
 
-
-
-                             }).AsQueryable(); // ทำให้ Query เป็น IQueryable
-
-                // Apply Filters
                 if (!string.IsNullOrEmpty(xModels?.OwnerSystemCode))
                 {
                     query = query.Where(u => u.OwnerSystemCode == xModels.OwnerSystemCode);
                 }
 
-                if (xModels?.Id != null && xModels?.Id !=0)
+                if (xModels?.Id != null && xModels?.Id != 0)
                 {
                     query = query.Where(u => u.Id == xModels.Id);
                 }
@@ -263,12 +232,8 @@ namespace SME_API_Apimanagement.Repository
             }
             catch (Exception ex)
             {
-                return new List<TSystemApiMappingModels>(); // Return List เปล่าแทน null
+                return new List<TSystemApiMappingModels>();
             }
         }
-
-
-
     }
-
 }

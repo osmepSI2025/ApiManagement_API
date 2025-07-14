@@ -8,7 +8,7 @@ namespace SME_API_Apimanagement.Repository
         Task<IEnumerable<TSystemApiMapping>> GetAllAsync();
         Task<TSystemApiMapping> GetByIdAsync(int id);
         Task AddAsync(TSystemApiMapping api);
-        Task UpdateAsync(TSystemApiMapping api);
+        Task<int> UpdateAsync(TSystemApiMapping api);
         Task<bool> DeleteAsync(int id);
         Task<int> UpsertSystemApi(UpSertSystemApiModels xModels);
         Task<List<TSystemApiMappingModels>> GetTSystemMappingBySearch(TSystemApiMappingModels xModels);
