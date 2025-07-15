@@ -228,7 +228,7 @@ namespace SME_API_Apimanagement.Repository
                     query = query.Where(u => u.Id == xModels.Id);
                 }
 
-                return await query.ToListAsync();
+                return await query.Distinct().ToListAsync();
             }
             catch (Exception ex)
             {
