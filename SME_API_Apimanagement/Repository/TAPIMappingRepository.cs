@@ -113,6 +113,7 @@ namespace SME_API_Apimanagement.Repository
                     }
 
                     success = await _context.SaveChangesAsync(); // เรียก SaveChangesAsync ครั้งเดียว
+                    success = 1;
                 }
 
             }
@@ -187,14 +188,16 @@ namespace SME_API_Apimanagement.Repository
                     }
                     else 
                     {
-
-                        var bDict = query.ToList().ToDictionary(
-         x => new { x.SystemCode, x.SystemApiMappingId }, x => x.FlagActive
-     );
+                        var bDict = query.ToList()
+                            .GroupBy(x => (x.SystemCode, x.SystemApiMappingId))
+                            .ToDictionary(
+                                g => g.Key,
+                                g => g.First().FlagActive // or use your preferred logic for duplicates
+                            );
 
                         result = queryCheckdata.ToList().Select(a =>
                         {
-                            var key = new { a.SystemCode, a.SystemApiMappingId };
+                            var key = (a.SystemCode, a.SystemApiMappingId);
                             var isSelected = bDict.TryGetValue(key, out bool? flagActive) ? flagActive : false;
 
                             return new TApiPermisionMappingModels
@@ -212,7 +215,6 @@ namespace SME_API_Apimanagement.Repository
                                 IsSelected = isSelected ?? false, // Use FlagActive as IsSelected
                             };
                         }).ToList();
-
                     }
                    
                 }
