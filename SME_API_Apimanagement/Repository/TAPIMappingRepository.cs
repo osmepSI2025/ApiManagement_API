@@ -251,31 +251,41 @@ namespace SME_API_Apimanagement.Repository
           
                 var query = (
                
-                 from ms in _context.MSystems                    
-                 join msi in _context.MSystemInfos on ms.SystemCode equals msi.SystemCode
-                 join  o in _context.MOrganizations on ms.OwnerSystemCode equals o.OrganizationCode
-                 join ts in _context.TSystemApiMappings on ms.SystemCode equals ts.OwnerSystemCode
+                 //from ms in _context.MSystems                    
+          
+                 //join  o in _context.MOrganizations on ms.OwnerSystemCode equals o.OrganizationCode
+                 //join ts in _context.TSystemApiMappings on ms.SystemCode equals ts.OwnerSystemCode
                  
-                 select new TApiPermisionMappingModels
+                    from ts in _context.TApiPermisionMappings                  
+                        join o in _context.MOrganizations on ts.OrganizationCode equals o.OrganizationCode
+                        join tms in _context.TSystemApiMappings on ts.SystemApiMappingId equals tms.Id
+                        join ms in _context.MSystems on tms.OwnerSystemCode equals ms.SystemCode
+                   
+
+
+                    select new TApiPermisionMappingModels
                  {
-                     OrganizationCode = ms.OwnerSystemCode,
+                     OrganizationCode = o.OrganizationCode,
                      OrganizationName =o.OrganizationName,
                      SystemCode = ms.SystemCode,
                      SystemName = ms.SystemName,                  
-                     FlagActive = ts.FlagActive,   
-                     ServiceName = ts.ApiServiceName.Trim(),
-                     ApiMethod =ts.ApiMethod,
-                     ApiUrlUatOundbound = msi.ApiUrlUatInbound,
-                     ApiUrlProdOundbound = msi.ApiUrlProdInbound,
-                     
+                     FlagActive = ts.FlagActive,    
+                     ServiceName = tms.ApiServiceName,
+                        ApiMethod = tms.ApiMethod,
+                     ApiUrlUatOundbound = tms.ApiUrlUatOutbound,
+                     ApiUrlProdOundbound = tms.ApiUrlProdInbound,
+                     ApiKey = ts.ApiKey,
                  })  
                  ; // ทำให้ Query เป็น IQueryable
                    // Apply Filters
             if (!string.IsNullOrEmpty(xModels?.System_Code))
             {
-                query = query.Where(u => u.SystemCode == xModels.System_Code);
+                query = query.Where(u => u.OrganizationCode == xModels.System_Code);
             }
-
+            if (!string.IsNullOrEmpty(xModels?.API_Key))
+            {
+                query = query.Where(u => u.ApiKey == xModels.API_Key);
+            }
             if (!string.IsNullOrEmpty(xModels?.System_Name))
             {
                 query = query.Where(u => u.SystemName.Contains(xModels.System_Name));

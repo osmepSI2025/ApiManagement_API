@@ -70,7 +70,9 @@ namespace SME_API_Apimanagement.Models
 
         public bool? FlagActive { get; set; }
 
-       
+        public string? API_Key { get; set; }
+
+
     }
 }
 
