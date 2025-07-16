@@ -10,10 +10,12 @@ namespace SME_API_Apimanagement.Repository
     {
         private readonly ApiMangeDBContext _context;
         private readonly HrEmployeeService _hrEmployee;
-        public MSystemRepository(ApiMangeDBContext context, HrEmployeeService hrEmployee)
+        private readonly IMOrganizationRepository _org;
+        public MSystemRepository(ApiMangeDBContext context, HrEmployeeService hrEmployee, IMOrganizationRepository org)
         {
             _context = context;
             _hrEmployee = hrEmployee;
+            _org = org;
         }
 
         public async Task<IEnumerable<MSystem>> GetAllAsync() =>
@@ -125,8 +127,9 @@ namespace SME_API_Apimanagement.Repository
 
         public async Task<List<MSystemModels>> GetSystemBySearch(MSystemModels xModels)
         {
-            var Ldepart = await _hrEmployee.GetDepartment();
-            var dpart = Ldepart.Results.ToList();
+            var Ldepart = await _org.GetAllAsync();
+           
+            var dpart = Ldepart.ToList();
 
             try
             {
@@ -139,7 +142,7 @@ namespace SME_API_Apimanagement.Repository
 
                     // 2. Join กับ dpart ใน memory
                     var query = from s in mSystems
-                                join dp in dpart on s.OwnerSystemCode equals dp.BusinessUnitId into dpJoin
+                                join dp in dpart on s.OwnerSystemCode equals dp.OrganizationCode into dpJoin
                                 from dp in dpJoin.DefaultIfEmpty()
                                 select new MSystemModels
                                 {
@@ -154,7 +157,7 @@ namespace SME_API_Apimanagement.Repository
                                     CreateDate = s.CreateDate,
                                     UpdateDate = s.UpdateDate,
                                     OwnerSystemCode = s.OwnerSystemCode,
-                                    OwnerSystemName = dp?.NameTh,
+                                    OwnerSystemName = dp?.OrganizationName,
                                     StartDate = s.StartDate,
                                     EndDate = s.EndDate
                                 };
@@ -173,9 +176,11 @@ namespace SME_API_Apimanagement.Repository
                         var start = xModels.StartDate.Value.Date;
                         var end = xModels.EndDate.Value.Date;
                         query = query.Where(u =>
-                            u.StartDate.HasValue && u.EndDate.HasValue &&
+                              u.StartDate.HasValue && u.EndDate.HasValue &&
+                            u.StartDate.Value.Date >= start &&
                             u.StartDate.Value.Date <= end &&
                             u.EndDate.Value.Date >= start
+                            && u.EndDate.Value.Date <= end
                         );
                     }
                     if (xModels.rowFetch != 0)
@@ -197,7 +202,7 @@ namespace SME_API_Apimanagement.Repository
 
                     var query = from s in mSystems
                                 join em in empmapsys on s.Id equals em.SystemApiId
-                                join dp in dpart on s.OwnerSystemCode equals dp.BusinessUnitId into dpJoin
+                                join dp in dpart on s.OwnerSystemCode equals dp.OrganizationCode into dpJoin
                                 from dp in dpJoin.DefaultIfEmpty()
                                 select new MSystemModels
                                 {
@@ -212,7 +217,7 @@ namespace SME_API_Apimanagement.Repository
                                     CreateDate = s.CreateDate,
                                     UpdateDate = s.UpdateDate,
                                     OwnerSystemCode = s.OwnerSystemCode,
-                                    OwnerSystemName = dp?.NameTh,
+                                    OwnerSystemName = dp?.OrganizationName,
                                     StartDate = s.StartDate,
                                     EndDate = s.EndDate
                                 };
@@ -232,8 +237,10 @@ namespace SME_API_Apimanagement.Repository
                         var end = xModels.EndDate.Value.Date;
                         query = query.Where(u =>
                             u.StartDate.HasValue && u.EndDate.HasValue &&
+                            u.StartDate.Value.Date >= start &&
                             u.StartDate.Value.Date <= end &&
                             u.EndDate.Value.Date >= start
+                            && u.EndDate.Value.Date <= end
                         );
                     }
                     if (xModels.rowFetch != 0)
@@ -304,8 +311,10 @@ namespace SME_API_Apimanagement.Repository
 
                     querySuperAdmin = querySuperAdmin.Where(u =>
                         u.StartDate.HasValue && u.EndDate.HasValue &&
+                        u.StartDate.Value.Date >= start &&
                         u.StartDate.Value.Date <= end &&
-                        u.EndDate.Value.Date >= start
+                        u.EndDate.Value.Date >= start &&
+                            u.EndDate.Value.Date <= end
                     );
                 }
 
