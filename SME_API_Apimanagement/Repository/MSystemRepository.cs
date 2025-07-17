@@ -38,11 +38,30 @@ namespace SME_API_Apimanagement.Repository
             if (entity == null) return 0;
 
             // อัปเดตเฉพาะ field ที่ต้องการ
-            entity.SystemName = model.SystemName;
-            entity.FlagActive = model.FlagActive??false;
+            if (model.StartDate!=null) 
+            {
+                entity.StartDate = model.StartDate;
+            }
+            if (model.EndDate != null)
+            {
+                entity.EndDate = model.EndDate;
+            }
+            if (model.SystemName != null)
+            {
+                entity.SystemName = model.SystemName;
+            }
+            if (model.FlagActive != null)
+            {
+                entity.FlagActive = model.FlagActive;
+            }
+            if (model.OwnerSystemCode != null)
+            {
+                entity.OwnerSystemCode = model.OwnerSystemCode;
+            }
+
             entity.UpdateDate = DateTime.Now;
             entity.UpdateBy = model.UpdateBy;
-            entity.OwnerSystemCode = model.OwnerSystemCode;
+ 
             return await _context.SaveChangesAsync();
         }
 
@@ -51,6 +70,58 @@ namespace SME_API_Apimanagement.Repository
             try
             {
                 var system = await _context.MSystems.FindAsync(id);
+
+                //delete sysinfo too
+
+                try {
+                    var sysInfos = await _context.MSystemInfos
+        .Where(x => x.SystemCode == system.SystemCode)
+        .ToListAsync();
+
+                    if (sysInfos.Any())
+                    {
+                        _context.MSystemInfos.RemoveRange(sysInfos);
+                        await _context.SaveChangesAsync();
+                    }
+                } catch (Exception ex)
+                {
+                
+                }
+
+                //delete api sys mapp
+                try
+                {
+                    var sysApiMapping = await _context.TSystemApiMappings
+       .Where(x => x.OwnerSystemCode == system.SystemCode)
+       .ToListAsync();
+                    if (sysApiMapping.Any())
+                    {
+                        _context.TSystemApiMappings.RemoveRange(sysApiMapping);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                //delete api permission mapping
+                try {
+                    var sysApiPermissionMapping = await _context.TApiPermisionMappings
+       .Where(x => x.SystemCode == system.SystemCode)
+       .ToListAsync();
+                    if (sysApiPermissionMapping.Any())
+                    {
+                        _context.TApiPermisionMappings.RemoveRange(sysApiPermissionMapping);
+                        await _context.SaveChangesAsync();
+                    }
+                } catch (Exception ex)
+                {
+                
+                }
+            
+
+
                 if (system != null)
                 {
                     system.FlagDelete = "Y";
@@ -58,7 +129,7 @@ namespace SME_API_Apimanagement.Repository
                     var xint = await _context.SaveChangesAsync();
                     return xint; // Return the number of rows updated
                 }
-                return 0; // Return 0 if the system is not found
+                return 1; // Return 0 if the system is not found
             }
             catch (Exception ex)
             {
@@ -71,26 +142,57 @@ namespace SME_API_Apimanagement.Repository
         {
             try
             {
-                var result = await GetByIdAsync(xModels.Id);
-
-                if (result != null)
+                if (xModels.Id !=0) 
                 {
-                    // สร้าง model สำหรับ update
-                    var xRaw = new MSystem
+                    var result = await GetByIdAsync(xModels.Id);
+
+                    if (result != null)
                     {
-                        Id = result.Id,
-                        SystemName = xModels.SystemName,
-                        FlagActive = xModels.FlagActive??false,
-                        UpdateBy = xModels.UpdateBy,
-                        OwnerSystemCode = xModels.OwnerSystemCode,
-                        StartDate = xModels.StartDate,
-                        EndDate = xModels.EndDate,
+                        // สร้าง model สำหรับ update
+                        var xRaw = new MSystem
+                        {
+                            Id = result.Id,
+                            SystemName = xModels.SystemName,
+                            FlagActive = xModels.FlagActive ?? false,
+                            UpdateBy = xModels.UpdateBy,
+                            OwnerSystemCode = xModels.OwnerSystemCode,
+                            StartDate = xModels.StartDate,
+                            EndDate = xModels.EndDate,
 
-                    };
+                        };
 
-                    await UpdateAsync(xRaw);
-                    return result.Id;
+                        await UpdateAsync(xRaw);
+                        return result.Id;
+                    }
+                    else
+                    {
+                        var allItems = await GetAllAsync();
+                        var resultRuning = allItems.OrderByDescending(x => x.Id).FirstOrDefault();
+                        var nextRunning = (resultRuning?.Runing ?? 0) + 1;
+
+                        var xRaw = new MSystem
+                        {
+                            SystemCode = "SYS-" + nextRunning.ToString("D4"),
+                            SystemName = xModels.SystemName,
+                              Runing = nextRunning,
+                            FlagActive = xModels.FlagActive ?? false,
+                            FlagDelete = "N",
+                            UpdateDate = DateTime.Now,
+                            CreateDate = DateTime.Now,
+                            CreateBy = xModels.CreateBy,
+                            UpdateBy = xModels.CreateBy,
+                            OwnerSystemCode = xModels.OwnerSystemCode,
+                            StartDate = xModels.StartDate,
+                            EndDate = xModels.EndDate,
+                        };
+
+                        _context.MSystems.Add(xRaw);
+                        await _context.SaveChangesAsync();
+
+                        return xRaw.Id;
+                    }
                 }
+                
                 else
                 {
                     var allItems = await GetAllAsync();
@@ -101,8 +203,8 @@ namespace SME_API_Apimanagement.Repository
                     {
                         SystemCode = "SYS-" + nextRunning.ToString("D4"),
                         SystemName = xModels.SystemName,
-                        Runing = nextRunning,
-                        FlagActive = xModels.FlagActive??false,
+                          Runing = nextRunning,
+                        FlagActive = xModels.FlagActive ?? false,
                         FlagDelete = "N",
                         UpdateDate = DateTime.Now,
                         CreateDate = DateTime.Now,
@@ -118,6 +220,7 @@ namespace SME_API_Apimanagement.Repository
 
                     return xRaw.Id;
                 }
+                
             }
             catch (Exception ex)
             {
@@ -293,6 +396,10 @@ namespace SME_API_Apimanagement.Repository
                     querySuperAdmin = querySuperAdmin.Where(u => u.CreateDate.Value.Date == xModels.CreateDate.Value.Date);
                 }
 
+                if (!string.IsNullOrEmpty(xModels?.SystemCode))
+                {
+                    querySuperAdmin = querySuperAdmin.Where(u => u.SystemCode==xModels.SystemCode);
+                }
                 if (xModels.EmployeeRole != "SUPERADMIN")
                 {
                     //if (xModels?.CreateBy != null)
@@ -375,7 +482,29 @@ namespace SME_API_Apimanagement.Repository
         {
             try
             {
-                var register = await _context.MSystems.Where(x=>x.SystemCode == models.SystemCode).FirstAsync();
+                var register = await _context.MSystems
+                    .Where(x => x.SystemCode == models.SystemCode)
+                    .FirstOrDefaultAsync();
+
+                // Update all related MSystemInfo records
+                try
+                {
+                    var sysInfos = await _context.MSystemInfos
+                        .Where(x => x.SystemCode == models.SystemCode)
+                        .ToListAsync();
+
+                    if (sysInfos.Any())
+                    {
+                        foreach (var sysInfo in sysInfos)
+                        {
+                            sysInfo.FlagActive = models.FlagActive;
+                            sysInfo.UpdateDate = DateTime.UtcNow;
+                        }
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                catch (Exception ex) { }
+
                 if (register != null)
                 {
                     register.FlagActive = models.FlagActive;
@@ -385,11 +514,9 @@ namespace SME_API_Apimanagement.Repository
                 return true;
             }
             catch (Exception ex)
-
             {
                 return false;
             }
-
         }
     }
 }

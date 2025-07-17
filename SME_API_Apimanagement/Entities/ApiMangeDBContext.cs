@@ -205,6 +205,8 @@ public partial class ApiMangeDBContext : DbContext
 
         modelBuilder.Entity<MSystem>(entity =>
         {
+            entity.HasKey(e => e.Id).HasName("PK_M_System_1");
+
             entity.ToTable("M_System", "SMEAPI");
 
             entity.Property(e => e.CreateBy).HasMaxLength(50);

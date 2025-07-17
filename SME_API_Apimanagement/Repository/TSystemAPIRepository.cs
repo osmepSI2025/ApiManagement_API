@@ -76,6 +76,26 @@ namespace SME_API_Apimanagement.Repository
             try
             {
                 var api = await _context.TSystemApiMappings.FindAsync(id);
+
+              
+                //delete api permission mapping
+                try
+                {
+                    var sysApiPermissionMapping = await _context.TApiPermisionMappings
+       .Where(x => x.SystemApiMappingId == id)
+       .ToListAsync();
+                    if (sysApiPermissionMapping.Any())
+                    {
+                        _context.TApiPermisionMappings.RemoveRange(sysApiPermissionMapping);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
                 if (api != null)
                 {
                     _context.TSystemApiMappings.Remove(api);

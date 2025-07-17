@@ -56,7 +56,8 @@ namespace SME_API_Apimanagement.Repository
             try
             {
                 var query = (from u in _context.MSystems
-                                     where u.FlagActive == true && u.FlagDelete == "N"
+                                   //  where u.FlagActive == true && u.FlagDelete == "N"
+                             where  u.FlagDelete == "N"
                              select new DropdownModels
                              {
                                  Code = u.SystemCode,
